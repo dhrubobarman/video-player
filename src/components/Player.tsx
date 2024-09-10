@@ -29,9 +29,12 @@ const Player = ({ videoData, className, videoClassName, open, setOpen, ...rest }
 
   useEffect(() => {
     if (!src) return;
-    generateThumbnailsAtIntervals(src, thumbnailInterval)
-      .then((thumbnails) => setSeekingThumnails(thumbnails))
-      .catch((e) => console.error(e));
+    const setThumbNails = () => {
+      generateThumbnailsAtIntervals(src, thumbnailInterval)
+        .then((thumbnails) => setSeekingThumnails(thumbnails))
+        .catch((e) => console.error(e));
+    };
+    setThumbNails();
   }, [src]);
 
   const [playerState, setPlayerState] = useState({
