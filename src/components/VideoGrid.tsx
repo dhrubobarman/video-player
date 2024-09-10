@@ -17,6 +17,10 @@ const VideoGrid = ({ files, setSelectedVideo, currentIndex, setCurrentIndex, set
   const handleSelectFiles = async (e: React.ChangeEvent<HTMLInputElement>) => {
     const fileData = await createFileDataFromFile(e);
     if (!fileData) return;
+    if (files.length === 0) {
+      setSelectedVideo(fileData[0]);
+      setCurrentIndex(0);
+    }
     setFiles((prev) => [...prev, ...fileData]);
   };
 
